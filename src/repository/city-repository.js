@@ -26,6 +26,26 @@ class CityRepository {
             }
         }
     }
+
+    async getCity(cityId){
+        try {
+            const city=await City.findByPk(cityId)
+            return city
+        } catch (error) {
+            throw {error}
+        }
+    }
+
+    async updateCity({name},cityId){
+        try {
+            const city=await City.findByPk(cityId)
+            city.name=name;
+            await city.save();
+            return true;
+        } catch (error) {
+            throw {error}
+        }
+    }
 }
 
-module.exports = {CityRepository}
+module.exports = CityRepository
