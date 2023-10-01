@@ -1,10 +1,13 @@
 const {CityService} = require("../services/index")
+const {SuccessCodes}=require("../utils/error-code")
 
 const cityService = new CityService();
+
+
 const create = async (req, res) => {
     try {
         const city = await cityService.createCity(req.body);
-        return res.status(201).json({data: city, message: "New city has been created", success: true})
+        return res.status(SuccessCodes.CREATED).json({data: city, message: "New city has been created", success: true})
     } catch (error) {
         console.log(error);
         return res.status(500).json({data: "Error", message: "City has not been created", success: false, err: {
@@ -42,7 +45,7 @@ const update =async  (req, res) => {
 const get =async (req, res) => {
     try {
         const city=await cityService.getCity(req.params.id);
-        return res.status(201).json({data: city, message: "Successfully fetched details", success: true})
+        return res.status(SuccessCodes.OK).json({data: city, message: "Successfully fetched details", success: true})
     } catch (error) {
         console.log(error);
         return res.status(500).json({data: "Error", message: "Failed to fetch details of the city", success: false, err: {
@@ -55,7 +58,7 @@ const getAll=async(req,res)=>{
     try {
         
         const cities=await cityService.getAllCities(req.query);
-        return res.status(201).json({data: cities, message: "Successfully fetched all Cities", success: true})
+        return res.status(SuccessCodes.OK).json({data: cities, message: "Successfully fetched all Cities", success: true})
     } catch (error) {
         console.log(error);
         return res.status(500).json({data: "Error", message: "Failed to fetch All cities", success: false, err: {
