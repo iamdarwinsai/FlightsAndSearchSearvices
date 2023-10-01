@@ -19,11 +19,7 @@ class CrudService{
 
     async delete(deleteId){
         try {
-            const result=await this.repository.delete({
-                where:{
-                    id:deleteId
-                }
-            });
+            const result=await this.repository.delete(deleteId);
             return result;
         } catch (error) {
             console.log("Something went wrong at the CRUD service layer");
@@ -43,9 +39,9 @@ class CrudService{
         }
     }
     
-    async get(){
+    async getAll(){
         try {
-            const result=await this.repository.get();
+            const result=await this.repository.getAll();
             return result;
         } catch (error) {
             console.log("Something went wrong in crus repo");

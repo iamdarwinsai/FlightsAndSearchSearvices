@@ -2,5 +2,6 @@ module.exports={
     CityService:require("./cityservice"),
     FlightService:require("./flightservice"),
     CrudService:require("./crud-service"),
-    AirportService:require("./airport-service")
+    AirportService:require("./airport-service"),
+    AirplaneService:require("./airplane-service")
 }

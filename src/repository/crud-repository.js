@@ -34,11 +34,7 @@ class CrudRepository {
 
     async get(getId) {
         try {
-            const result = await this.model.findByPk({
-                where: {
-                    id: getId
-                }
-            });
+            const result = await this.model.findByPk(getId);
             return result;
         } catch (error) {
             console.log("Something went wrong in CRUD LAYER");
@@ -48,7 +44,7 @@ class CrudRepository {
         }
     }
 
-    async get() {
+    async getAll() {
         try {
             const result = await this.model.findByAll();
             return result;
